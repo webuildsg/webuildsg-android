@@ -7,7 +7,7 @@ public class KeyConfig {
     public static final String PREF_UUID = "PREF_UUID";
 
     // Caching Key
-    public static final String CACHE_EVENTS = "cache_events";
+    public static final String CACHE_REPO = "cache_repo";
     public static final String CACHE_UPDATED_JOHOR = "cache_johor_time";
     public static final String CACHE_NRIC = "cache_nric";
     public static final String CACHE_PROFILE = "cache_profile";

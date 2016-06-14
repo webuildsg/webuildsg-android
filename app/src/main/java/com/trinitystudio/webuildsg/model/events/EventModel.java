@@ -1,7 +1,5 @@
 package com.trinitystudio.webuildsg.model.events;
 
-import com.trinitystudio.webuildsg.model.MetaModel;
-
 import java.util.ArrayList;
 
 /**

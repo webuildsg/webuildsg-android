@@ -95,6 +95,10 @@ public class EventFragment extends BaseFragment {
                         swipeRefreshLayout.setRefreshing(false);
                     }
                 }
+                else
+                {
+                    Snackbar.make(coordinatorLayout, getString(R.string.err_error_data), Snackbar.LENGTH_SHORT).show();
+                }
             }
         }, new Response.ErrorListener() {
             @Override

@@ -1,46 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:paddingBottom="@dimen/space_extra_small">
+    android:layout_height="wrap_content">
 
     <LinearLayout
-        android:gravity="center_vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingRight="@dimen/space_extra_small"
-        android:orientation="horizontal">
-        <LinearLayout
-            android:padding="@dimen/space_small"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <TextView
-                android:id="@+id/tv_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/empty_fill"
-                android:textAppearance="@style/Material_Subhead_Bold"/>
-            <TextView
-                android:layout_marginTop="@dimen/space_small"
-                android:id="@+id/tv_date"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/empty_fill"
-                android:textAppearance="@style/Material_Body_Regular"/>
-        </LinearLayout>
+        android:orientation="vertical">
 
-        <ImageView
-            android:layout_width="wrap_content"
+        <com.balysv.materialripple.MaterialRippleLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_chevron_right_black_24dp"/>
-    </LinearLayout>
+            app:mrl_rippleColor="@color/colorAccentLight">
+            <LinearLayout
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingRight="@dimen/space_extra_small"
+                android:orientation="horizontal">
+                <LinearLayout
+                    android:padding="@dimen/space_small"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/tv_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/empty_fill"
+                        android:textAppearance="@style/Material_Subhead_Bold"/>
+                    <TextView
+                        android:layout_marginTop="@dimen/space_small"
+                        android:id="@+id/tv_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/empty_fill"
+                        android:textAppearance="@style/Material_Body_Regular"/>
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_chevron_right_black_24dp"/>
+            </LinearLayout>
+        </com.balysv.materialripple.MaterialRippleLayout>
 
     <ImageView
         android:layout_marginLeft="@dimen/space_small"
         android:layout_width="match_parent"
         android:layout_height="0.1dp"
         android:src="@color/grey_600"/>
+    </LinearLayout>
 </LinearLayout>

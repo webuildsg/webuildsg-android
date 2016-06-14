@@ -9,6 +9,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <RelativeLayout
+            android:clipChildren="false"
+            android:clipToPadding="false"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <TextView
@@ -21,7 +23,8 @@
                 android:text="@string/empty_fill"
                 android:textAppearance="@style/Material_Caption_Italic"/>
             <android.support.v7.widget.RecyclerView
-                android:paddingTop="@dimen/space_large"
+                android:clipChildren="false"
+                android:clipToPadding="false"
                 android:id="@+id/recycler_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
