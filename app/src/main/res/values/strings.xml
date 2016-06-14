@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">We Build SG</string>
+    <string name="action_settings">Settings</string>
+    <string name="events">Events</string>
+    <string name="repos">Repos</string>
+    <string name="empty_fill"></string>
+
+    <string name="lost_connection">No internet connection.</string>
+    <string name="err_enter_correct_nric">Please enter correct NRIC</string>
+    <string name="err_location">Location request not enabled</string>
+    <string name="err_empty">Cannot leave empty.</string>
+    <string name="err_error_network">Network Error.</string>
+    <string name="err_error_data">Data Error.</string>
+</resources>
