@@ -36,6 +36,9 @@
         <activity android:name=".activity.EventDetailActivity"
             android:screenOrientation="sensorPortrait"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activity.RepoDetailActivity"
+            android:screenOrientation="sensorPortrait"
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <meta-data android:name="com.google.android.geo.API_KEY" android:value="@string/google_maps_key" />
     </application>

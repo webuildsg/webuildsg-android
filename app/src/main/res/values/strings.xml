@@ -8,6 +8,14 @@
     <string name="event_detail">Event Details</string>
     <string name="add_to_calendar">Add to Calendar</string>
     <string name="rsvp_event">RSVP Event</string>
+    <string name="view_code">View Code</string>
+    <string name="language">Language</string>
+    <string name="star_count">Stargazers Count</string>
+    <string name="forks_count">Forks Count</string>
+    <string name="open_issues_count">Open Issues Count</string>
+    <string name="description">Description</string>
+    <string name="repo_list_title">%1$s (%2$s)</string>
+
 
     <string name="lost_connection">No internet connection.</string>
     <string name="err_enter_correct_nric">Please enter correct NRIC</string>

@@ -1,5 +1,6 @@
 package com.trinitystudio.webuildsg.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CoordinatorLayout;
@@ -21,6 +22,7 @@ import com.trinitystudio.core.manager.ApiManager;
 import com.trinitystudio.core.manager.UriManager;
 import com.trinitystudio.core.net.CustomObjectRequest;
 import com.trinitystudio.webuildsg.R;
+import com.trinitystudio.webuildsg.activity.RepoDetailActivity;
 import com.trinitystudio.webuildsg.adapter.RepoInfoAdapter;
 import com.trinitystudio.webuildsg.config.KeyConfig;
 import com.trinitystudio.webuildsg.model.repos.RepoModel;
@@ -62,12 +64,12 @@ public class RepoFragment extends BaseFragment {
         adapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-//                Intent intent = new Intent();
-//                intent.setClass(getContext(), TrafficPhotoActivity.class);
-//                Bundle bundle = new Bundle();
-//                bundle.putString(KeyConfig.BUNDLE_CAMERA_ID, trafficInfo.get(position).getCameraId());
-//                intent.putExtras(bundle);
-//                startActivity(intent);
+                Intent intent = new Intent();
+                intent.setClass(getContext(), RepoDetailActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putSerializable(KeyConfig.BUNDLE_REPO, repos.getRepos().get(position));
+                intent.putExtras(bundle);
+                startActivity(intent);
             }
         });
 

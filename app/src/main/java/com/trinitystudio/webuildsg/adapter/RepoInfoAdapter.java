@@ -47,7 +47,7 @@ public class RepoInfoAdapter extends RecyclerView.Adapter<RepoInfoAdapter.ViewHo
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int position) {
         RepoSingleModel e = repoInfoModels.get(position);
-        viewHolder.tvTitle.setText(e.getName());
+        viewHolder.tvTitle.setText(String.format(viewHolder.itemView.getContext().getString(R.string.repo_list_title), e.getName(), e.getLanguage()));
         viewHolder.tvDate.setText(String.format(viewHolder.itemView.getContext().getString(R.string.updated_on), e.getFormatted_time()));
     }
 
@@ -65,12 +65,15 @@ public class RepoInfoAdapter extends RecyclerView.Adapter<RepoInfoAdapter.ViewHo
             tvTitle = (TextView)itemView.findViewById(R.id.tv_title);
             tvDate = (TextView)itemView.findViewById(R.id.tv_date);
 
-            itemView.setOnClickListener(new View.OnClickListener() {
+            View rippleView = itemView.findViewById(R.id.ripple_view);
+
+            rippleView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if(onItemClickListener != null)
                     {
-                        onItemClickListener.onItemClick(getAdapterPosition());
+                        if(getAdapterPosition() >= 0)
+                            onItemClickListener.onItemClick(getAdapterPosition());
                     }
                 }
             });
