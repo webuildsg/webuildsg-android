@@ -119,20 +119,33 @@ public class EventDetailActivity extends BaseActivity implements OnMapReadyCallb
         googleMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
             @Override
             public void onMapClick(LatLng latLng) {
-                String mapUrl = String.format("http://maps.google.co.in/maps?q=%s", event.getLocation());
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(mapUrl));
-                startActivity(intent);
+
+                if(event.getLatitude() == 0f && event.getLongitude() == 0f)
+                {
+                    String mapUrl = String.format("http://maps.google.co.in/maps?q=%s", event.getLocation());
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(mapUrl));
+                    startActivity(intent);
+                }
+                else
+                {
+                    String mapUrl = String.format("geo:%s,%s?q=%s", event.getLatitude(), event.getLongitude(), event.getLocation());
+                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(mapUrl));
+                    startActivity(intent);
+                }
             }
         });
 
         if(event.getLatitude() == 0f && event.getLongitude() == 0f)
         {
-            event.setLatitude(1.290270f);
-            event.setLongitude(103.851959f);
+            LatLng eventLatLng = new LatLng(1.290270f, 103.851959f);
+            googleMap.addMarker(new MarkerOptions().position(eventLatLng).title(event.getLocation()));
+            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(eventLatLng, 15f));
         }
+        else {
 
-        LatLng eventLatLng = new LatLng(event.getLatitude(), event.getLongitude());
-        googleMap.addMarker(new MarkerOptions().position(eventLatLng).title(event.getLocation()));
-        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(eventLatLng, 15f));
+            LatLng eventLatLng = new LatLng(event.getLatitude(), event.getLongitude());
+            googleMap.addMarker(new MarkerOptions().position(eventLatLng).title(event.getLocation()));
+            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(eventLatLng, 15f));
+        }
     }
 }
