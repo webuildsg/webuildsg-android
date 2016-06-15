@@ -39,12 +39,14 @@ public class EventDetailActivity extends BaseActivity implements OnMapReadyCallb
     private View btnAddCalendr;
     private View btnRsvpEvent;
     private SimpleDateFormat sdf = new SimpleDateFormat(GlobalConstant.DATE_TIME_FORMAT3);
+    private SimpleDateFormat sdf1 = new SimpleDateFormat(GlobalConstant.DATE_TIME_FORMAT4);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_detail);
         sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
+        sdf1.setTimeZone(TimeZone.getTimeZone("GMT"));
 
         Bundle bundle = getIntent().getExtras();
         if(bundle != null)
@@ -87,7 +89,26 @@ public class EventDetailActivity extends BaseActivity implements OnMapReadyCallb
                             .putExtra(CalendarContract.Events.AVAILABILITY, CalendarContract.Events.AVAILABILITY_BUSY);
                     startActivity(intent);
                 } catch (ParseException e) {
+
                     e.printStackTrace();
+
+                    try {
+                        Date sDate = sdf1.parse(event.getStart_time());
+                        Date eDate = sdf1.parse(event.getEnd_time());
+                        Intent intent = new Intent(Intent.ACTION_INSERT)
+                                .setData(CalendarContract.Events.CONTENT_URI)
+                                .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, sDate.getTime())
+                                .putExtra(CalendarContract.EXTRA_EVENT_END_TIME, eDate.getTime())
+                                .putExtra(CalendarContract.Events.TITLE, event.getName())
+                                .putExtra(CalendarContract.Events.DESCRIPTION, event.getDescription())
+                                .putExtra(CalendarContract.Events.EVENT_LOCATION, event.getLocation())
+                                .putExtra(CalendarContract.Events.AVAILABILITY, CalendarContract.Events.AVAILABILITY_BUSY);
+                        startActivity(intent);
+                    }
+                    catch (Exception e1)
+                    {
+                        e1.printStackTrace();
+                    }
                 }
             }
         });
