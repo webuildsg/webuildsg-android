@@ -24,7 +24,9 @@ Thank you:
 ## Changes log
 ### v1.0
 -. List all events and repos.
+
 -. Add to calendar for the event.
+
 -. RSVP Event.
 
 
