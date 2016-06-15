@@ -1,13 +1,13 @@
 # webuildsg-android
-> iOS client for iPhone and iPad to display the data from [We Build SG](https://webuild.sg/). Download from the [App Store](https://itunes.apple.com/us/app/we-build-sg/id1089421487?mt=8)!
+> Android client for android devices with OS 4.0 and above to display the data from [We Build SG](https://webuild.sg/). Download from the [App Store](https://itunes.apple.com/us/app/we-build-sg/id1089421487?mt=8)!
 
 ![](images/screenshot.jpg)
 
 ## Quick start
 
-*Note: You do not need to have the Apple developer program to run in your device. Just connect your iPhone / iPad* :cool:
+*Note: You do not need to have the Google developer program to run in your device. Just connect your android device* :cool:
 
-1. Clone with `git clone git@github.com:webuildsg/iOS.git` or [Download ZIP](https://github.com/webuildsg/iOS/archive/master.zip)
+1. Clone with `https://github.com/liccowee/webuildsg-android.git`
 - `cd` to the directory `iOS` and install the dependancies with [RubyGem](https://rubygems.org/)
 
   ```shell
@@ -16,18 +16,14 @@
   ```
 - Double click `WeBuildSG.xcworkspace` and open the project in the latest version of Xcode
 
-  ![](images/workspace.png)
+  ![](images/screen1.png)
 - Connect your iPhone / iPad and run in the device
 
-  ![](images/run.png)
+  ![](images/screen2.png)
 
 ## Credits
 
 Thank you:
-
-1. [iOS Stanford lecture 10 by Paul Hegarty](https://itunes.apple.com/en/course/developing-ios-8-apps-swift/id961180099)
-- [Stackoverflow answers to my questions](https://stackoverflow.com/users/496797/sayanee?tab=questions)
-- [iOS Dev Scout](http://iosdevscout.com/)
 
 ## License
 
