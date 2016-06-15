@@ -8,18 +8,14 @@
 *Note: You do not need to have the Google developer program to run in your device. Just connect your android device* :cool:
 
 1. Clone with `https://github.com/liccowee/webuildsg-android.git`
-- `cd` to the directory `iOS` and install the dependancies with [RubyGem](https://rubygems.org/)
 
-  ```shell
-  sudo gem install cocoapods
-  pod install
-  ```
-- Double click `WeBuildSG.xcworkspace` and open the project in the latest version of Xcode
 
-  ![](images/screen1.png)
-- Connect your iPhone / iPad and run in the device
+2. File -> Open `webuildsg-android` project in the latest version of Android Studio
 
-  ![](images/screen2.png)
+  ![](images/screen-open.png)
+3. Click Instant-Run button and run it in your device.
+
+  ![](images/screen-dev.png)
 
 ## Credits
 
