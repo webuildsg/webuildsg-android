@@ -1,7 +1,7 @@
 # webuildsg-android
 > Android client for android devices with OS 4.0 and above to display the data from [We Build SG](https://webuild.sg/). Download from the [App Store](https://itunes.apple.com/us/app/we-build-sg/id1089421487?mt=8)!
 
-![](images/screenshot.jpg)
+![](images/screen-all.png)
 
 ## Quick start
 
