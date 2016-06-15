@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.CalendarContract;
 import android.support.customtabs.CustomTabsIntent;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
@@ -15,10 +16,16 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.trinitystudio.core.GlobalConstant;
 import com.trinitystudio.core.customtabs.CustomTabActivityHelper;
 import com.trinitystudio.webuildsg.R;
 import com.trinitystudio.webuildsg.config.KeyConfig;
 import com.trinitystudio.webuildsg.model.events.EventSingleModel;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.TimeZone;
 
 /**
  * Created by liccowee on 6/14/16.
@@ -31,11 +38,13 @@ public class EventDetailActivity extends BaseActivity implements OnMapReadyCallb
     private TextView tvDescription;
     private View btnAddCalendr;
     private View btnRsvpEvent;
+    private SimpleDateFormat sdf = new SimpleDateFormat(GlobalConstant.DATE_TIME_FORMAT3);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_event_detail);
+        sdf.setTimeZone(TimeZone.getTimeZone("GMT"));
 
         Bundle bundle = getIntent().getExtras();
         if(bundle != null)
@@ -64,7 +73,22 @@ public class EventDetailActivity extends BaseActivity implements OnMapReadyCallb
         btnAddCalendr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                try {
+                    Date sDate = null;
+                    sDate = sdf.parse(event.getStart_time());
+                    Date eDate = sdf.parse(event.getEnd_time());
+                    Intent intent = new Intent(Intent.ACTION_INSERT)
+                            .setData(CalendarContract.Events.CONTENT_URI)
+                            .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, sDate.getTime())
+                            .putExtra(CalendarContract.EXTRA_EVENT_END_TIME, eDate.getTime())
+                            .putExtra(CalendarContract.Events.TITLE, event.getName())
+                            .putExtra(CalendarContract.Events.DESCRIPTION, event.getDescription())
+                            .putExtra(CalendarContract.Events.EVENT_LOCATION, event.getLocation())
+                            .putExtra(CalendarContract.Events.AVAILABILITY, CalendarContract.Events.AVAILABILITY_BUSY);
+                    startActivity(intent);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
             }
         });
 

@@ -20,7 +20,11 @@ public class GlobalConstant {
 
     public static final String DATE_FORMAT = "yyyy-MM-dd";
     public static final String TIME_FORMAT = "T00:00:00+08:00";
+    public static final String TIME_FORMAT2 = "'T'HH:mm:ssZZZZZ";
+    public static final String TIME_FORMAT3 = "'T'HH:mm:ss'Z'";
     public static final String STANDARD_DATE_FORMAT = "d MMMM yyyy";
-    public static final String DATE_TIME_FORMAT = DATE_FORMAT + TIME_FORMAT;
+    public static final String STANDARD_DATE_TIME_FORMAT = "d MMMM yyyy hh:mm a";
+    public static final String DATE_TIME_FORMAT = DATE_FORMAT + TIME_FORMAT2;
+    public static final String DATE_TIME_FORMAT3 = DATE_FORMAT + TIME_FORMAT3;
     public static final SimpleDateFormat SIMPLE_DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd hh:mm a");
 }
