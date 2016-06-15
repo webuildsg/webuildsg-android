@@ -84,7 +84,7 @@ public class RepoFragment extends BaseFragment {
             public void onResponse(String response, boolean fromCached) {
                 System.out.println(response);
 
-                RepoModel repos = new Gson().fromJson(response, RepoModel.class);
+                repos = new Gson().fromJson(response, RepoModel.class);
                 if(repos != null) {
 
                     adapter.setData(repos.getRepos());

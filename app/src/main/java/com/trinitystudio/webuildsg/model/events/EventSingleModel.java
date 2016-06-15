@@ -1,9 +1,11 @@
 package com.trinitystudio.webuildsg.model.events;
 
+import java.io.Serializable;
+
 /**
  * Created by liccowee on 6/14/16.
  */
-public class EventSingleModel
+public class EventSingleModel implements Serializable
 {
     private String name;
     private String description;
@@ -15,6 +17,7 @@ public class EventSingleModel
     private String formatted_time;
     private String start_time;
     private String end_time;
+
     private float latitude;
     private float longitude;
 
@@ -64,5 +67,15 @@ public class EventSingleModel
 
     public String getUrl() {
         return url;
+    }
+
+
+
+    public void setLatitude(float latitude) {
+        this.latitude = latitude;
+    }
+
+    public void setLongitude(float longitude) {
+        this.longitude = longitude;
     }
 }

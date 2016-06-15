@@ -64,13 +64,15 @@ public class EventInfoAdapter extends RecyclerView.Adapter<EventInfoAdapter.View
             super(itemView);
             tvTitle = (TextView)itemView.findViewById(R.id.tv_title);
             tvDate = (TextView)itemView.findViewById(R.id.tv_date);
+            View rippleView = itemView.findViewById(R.id.ripple_view);
 
-            itemView.setOnClickListener(new View.OnClickListener() {
+            rippleView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if(onItemClickListener != null)
                     {
-                        onItemClickListener.onItemClick(getAdapterPosition());
+                        if(getAdapterPosition() >= 0)
+                            onItemClickListener.onItemClick(getAdapterPosition());
                     }
                 }
             });

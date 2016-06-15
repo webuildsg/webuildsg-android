@@ -8,23 +8,12 @@ public class KeyConfig {
 
     // Caching Key
     public static final String CACHE_REPO = "cache_repo";
-    public static final String CACHE_UPDATED_JOHOR = "cache_johor_time";
-    public static final String CACHE_NRIC = "cache_nric";
-    public static final String CACHE_PROFILE = "cache_profile";
     public static final String CACHE_EVENT = "cache_event";
-    public static final String CACHE_NONE = "cache_none";
 
 
     // bundle key
-    public static final String BUNDLE_CAMERA_ID = "camera_id";
-    public static final String BUNDLE_NRIC = "nric";
-    public static final String BUNDLE_DIALOG_MESSAGE = "dialog_message";
-    public static final String BUNDLE_DIALOG_SUCCESS = "dialog_success";
-    public static final String BUNDLE_EVENT_DATA = "event_data";
-    public static final String BUNDLE_URL = "url";
-    public static final String BUNDLE_MESSAGE = "message";
-    public static final String BUNDLE_PROFILE = "profile";
-    public static final String BUNDLE_POLL_SELECTED = "poll_selected";
+    public static final String BUNDLE_EVENT = "bundle_event";
+    public static final String BUNDLE_REPO = "bundle_repo";
 
 
     public static final String PUSH_NOTIFICATION_URL_ID = "id";

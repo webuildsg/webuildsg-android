@@ -5,6 +5,9 @@
     <string name="repos">Repos</string>
     <string name="empty_fill"></string>
     <string name="updated_on">Updated on %s</string>
+    <string name="event_detail">Event Details</string>
+    <string name="add_to_calendar">Add to Calendar</string>
+    <string name="rsvp_event">RSVP Event</string>
 
     <string name="lost_connection">No internet connection.</string>
     <string name="err_enter_correct_nric">Please enter correct NRIC</string>
