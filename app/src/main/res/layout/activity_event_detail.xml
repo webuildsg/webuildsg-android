@@ -134,6 +134,7 @@
                 android:orientation="horizontal">
 
                 <com.balysv.materialripple.MaterialRippleLayout
+                    android:id="@+id/btn_add_calendar"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     app:mrl_rippleOverlay="true"
@@ -157,6 +158,7 @@
 
 
                 <com.balysv.materialripple.MaterialRippleLayout
+                    android:id="@+id/btn_rsvp_event"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     app:mrl_rippleOverlay="true"

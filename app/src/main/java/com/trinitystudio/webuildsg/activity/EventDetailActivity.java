@@ -1,8 +1,12 @@
 package com.trinitystudio.webuildsg.activity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.customtabs.CustomTabsIntent;
+import android.support.v4.content.ContextCompat;
+import android.view.View;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -11,6 +15,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.trinitystudio.core.customtabs.CustomTabActivityHelper;
 import com.trinitystudio.webuildsg.R;
 import com.trinitystudio.webuildsg.config.KeyConfig;
 import com.trinitystudio.webuildsg.model.events.EventSingleModel;
@@ -24,6 +29,8 @@ public class EventDetailActivity extends BaseActivity implements OnMapReadyCallb
     private TextView tvLocationName;
     private EventSingleModel event;
     private TextView tvDescription;
+    private View btnAddCalendr;
+    private View btnRsvpEvent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,11 +53,36 @@ public class EventDetailActivity extends BaseActivity implements OnMapReadyCallb
         tvDate = (TextView) findViewById(R.id.tv_date);
         tvLocationName = (TextView) findViewById(R.id.tv_location_name);
         tvDescription = (TextView) findViewById(R.id.tv_description);
+        btnAddCalendr = findViewById(R.id.btn_add_calendar);
+        btnRsvpEvent = findViewById(R.id.btn_rsvp_event);
 
         tvTitle.setText(event.getName());
         tvDate.setText(event.getFormatted_time());
         tvLocationName.setText(event.getLocation());
         tvDescription.setText(event.getDescription());
+
+        btnAddCalendr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        btnRsvpEvent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri = Uri.parse(event.getUrl());
+                CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder().setToolbarColor(ContextCompat.getColor(EventDetailActivity.this, R.color.colorPrimary)).build();
+                CustomTabActivityHelper.openCustomTab(EventDetailActivity.this, customTabsIntent, uri, new CustomTabActivityHelper.CustomTabFallback() {
+
+                    @Override
+                    public void openUri(Activity activity, Uri uri) {
+                        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                        startActivity(intent);
+                    }
+                });
+            }
+        });
 
         SupportMapFragment map = (SupportMapFragment)getSupportFragmentManager().findFragmentById(R.id.map);
         map.getMapAsync(this);
