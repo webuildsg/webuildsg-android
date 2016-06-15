@@ -19,15 +19,15 @@
 
 ## Credits
 
-Thank you:
+Contributions:
+
+1. [Licco](https://www.linkedin.com/in/licco-vzai-41911395)
 
 ## Changes log
 ### v1.0
--. List all events and repos.
-
--. Add to calendar for the event.
-
--. RSVP Event.
+1. List all events and repos.
+- Add to calendar for the event.
+- RSVP Event.
 
 
 ## License
