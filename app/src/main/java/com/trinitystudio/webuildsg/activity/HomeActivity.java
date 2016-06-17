@@ -6,7 +6,9 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
+import com.trinitystudio.core.util.DeviceUtil;
 import com.trinitystudio.webuildsg.R;
 import com.trinitystudio.webuildsg.adapter.HomeMenuPagerAdapter;
 
@@ -27,6 +29,9 @@ public class HomeActivity extends BaseActivity {
         setSupportActionBar(toolbar);
 
         initTabMenu();
+
+        String appversion = String.format(getString(R.string.app_version), DeviceUtil.getAppVersion(this));
+        Toast.makeText(this, appversion, Toast.LENGTH_SHORT).show();
     }
 
     @Override

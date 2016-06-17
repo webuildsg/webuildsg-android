@@ -16,6 +16,7 @@
     <string name="description">Description</string>
     <string name="repo_list_title">%1$s (%2$s)</string>
     <string name="empty_record">Empty</string>
+    <string name="app_version">WeBuildSG v%1$s</string>
 
 
     <string name="lost_connection">No internet connection.</string>

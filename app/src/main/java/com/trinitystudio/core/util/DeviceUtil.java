@@ -58,8 +58,7 @@ public class DeviceUtil {
 	public static String getAppVersion(Context context) {
 		try {
 			PackageManager manager = context.getPackageManager();
-			PackageInfo info = manager.getPackageInfo(context.getPackageName(),
-					0);
+			PackageInfo info = manager.getPackageInfo(context.getPackageName(), 0);
 			return info.versionName;
 		} catch (NameNotFoundException e) {
 			e.printStackTrace();
