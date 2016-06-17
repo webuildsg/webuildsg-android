@@ -38,12 +38,14 @@ public class RepoFragment extends BaseFragment {
     private SwipeRefreshLayout swipeRefreshLayout;
     private CustomObjectRequest urlRequestRepos;
     private CoordinatorLayout coordinatorLayout;
+    private View emptyView;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_repo, container, false);
 
+        emptyView = view.findViewById(R.id.wrap_empty_view);
         coordinatorLayout = (CoordinatorLayout) view.findViewById(R.id.coordinator_layout);
         swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe_refresh_layout);
         recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
@@ -81,6 +83,7 @@ public class RepoFragment extends BaseFragment {
     private void getRepos()
     {
         String uri = String.format("%s", UriManager.repos());
+        swipeRefreshLayout.setRefreshing(true);
         urlRequestRepos = ApiManager.getInstance().urlRequest(getContext(), KeyConfig.CACHE_REPO, true, true, StringRequest.Method.GET, uri, new OnResponseListener() {
             @Override
             public void onResponse(String response, boolean fromCached) {
@@ -96,6 +99,11 @@ public class RepoFragment extends BaseFragment {
                         if (urlRequestRepos != null) urlRequestRepos.markDelivered();
                         swipeRefreshLayout.setRefreshing(false);
                     }
+
+                    if(repos.getRepos().isEmpty())
+                        emptyView.setVisibility(View.VISIBLE);
+                    else
+                        emptyView.setVisibility(View.GONE);
                 }
             }
         }, new Response.ErrorListener() {

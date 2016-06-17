@@ -38,12 +38,14 @@ public class EventFragment extends BaseFragment {
     private SwipeRefreshLayout swipeRefreshLayout;
     private CustomObjectRequest urlRequestEvents;
     private CoordinatorLayout coordinatorLayout;
+    private View emptyView;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_event, container, false);
 
+        emptyView = view.findViewById(R.id.wrap_empty_view);
         coordinatorLayout = (CoordinatorLayout) view.findViewById(R.id.coordinator_layout);
         swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe_refresh_layout);
         recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
@@ -81,6 +83,7 @@ public class EventFragment extends BaseFragment {
     private void getEvents()
     {
         String uri = String.format("%s", UriManager.events());
+        swipeRefreshLayout.setRefreshing(true);
         urlRequestEvents = ApiManager.getInstance().urlRequest(getContext(), KeyConfig.CACHE_EVENT, true, true, StringRequest.Method.GET, uri, new OnResponseListener() {
             @Override
             public void onResponse(String response, boolean fromCached) {
@@ -96,6 +99,11 @@ public class EventFragment extends BaseFragment {
                         if (urlRequestEvents != null) urlRequestEvents.markDelivered();
                         swipeRefreshLayout.setRefreshing(false);
                     }
+
+                    if(events.getEvents().isEmpty())
+                        emptyView.setVisibility(View.VISIBLE);
+                    else
+                        emptyView.setVisibility(View.GONE);
                 }
                 else
                 {
