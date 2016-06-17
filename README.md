@@ -1,5 +1,5 @@
 # webuildsg-android - v1.0
-> Android client for android devices with OS 4.0 and above to display the data from [We Build SG](https://webuild.sg/). Coming soon to the Play Store!
+> Android client for android devices with OS 4.0 and above to display the data from [We Build SG](https://webuild.sg/). Download from the [Google Play Store](https://play.google.com/store/apps/details?id=com.trinitystudio.webuildsg)!
 
 ![](images/screen-all.png)
 
