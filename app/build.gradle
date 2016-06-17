@@ -31,16 +31,16 @@ android {
 
     signingConfigs{
         development{
-            storeFile file("trinity-keystore.keystore")
+            storeFile file("~/Users/liccowee/Desktop/trinity-keystore.keystore")
             storePassword "trinitystudio"
-            keyAlias "jamlah"
-            keyPassword "trinity3studio"
+            keyAlias "webuildsg"
+            keyPassword "webuildsg"
         }
         production{
-            storeFile file("trinity-keystore.keystore")
+            storeFile file("~/Users/liccowee/Desktop/trinity-keystore.keystore")
             storePassword "trinitystudio"
-            keyAlias "jamlah"
-            keyPassword "trinity3studio"
+            keyAlias "webuildsg"
+            keyPassword "webuildsg"
         }
     }
 
