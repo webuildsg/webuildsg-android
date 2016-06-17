@@ -39,12 +39,14 @@ public class RepoFragment extends BaseFragment {
     private CustomObjectRequest urlRequestRepos;
     private CoordinatorLayout coordinatorLayout;
     private View emptyView;
+    private View loadingIndicator;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_repo, container, false);
 
+        loadingIndicator = view.findViewById(R.id.avloadingIndicatorView);
         emptyView = view.findViewById(R.id.wrap_empty_view);
         coordinatorLayout = (CoordinatorLayout) view.findViewById(R.id.coordinator_layout);
         swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe_refresh_layout);
@@ -105,6 +107,8 @@ public class RepoFragment extends BaseFragment {
                     else
                         emptyView.setVisibility(View.GONE);
                 }
+
+                loadingIndicator.setVisibility(View.GONE);
             }
         }, new Response.ErrorListener() {
             @Override

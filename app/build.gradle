@@ -97,6 +97,10 @@ dependencies {
         transitive = true
     }
 
+    // loading indicator
+    compile 'com.wang.avi:library:1.0.5'
+    compile 'com.nineoldandroids:library:2.4.0'
+
     // bottom sheet
     compile 'com.cocosw:bottomsheet:1.+@aar'
 }

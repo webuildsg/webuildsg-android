@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical" android:layout_width="match_parent"
     android:id="@+id/coordinator_layout"
     android:layout_height="match_parent">
@@ -35,6 +36,17 @@
             </RelativeLayout>
 
             <include layout="@layout/layout_empty_view" android:id="@+id/wrap_empty_view" />
+
+            <com.wang.avi.AVLoadingIndicatorView
+                android:id="@+id/avloadingIndicatorView"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/space_extra_super_large"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:visibility="visible"
+                app:indicator="BallPulse"
+                app:indicator_color="@color/colorPrimaryDark"
+                />
         </RelativeLayout>
 
     </android.support.v4.widget.SwipeRefreshLayout>
