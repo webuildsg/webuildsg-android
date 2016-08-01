@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.provider.CalendarContract;
 import android.support.customtabs.CustomTabsIntent;
 import android.support.v4.content.ContextCompat;
+import android.text.Html;
 import android.view.View;
 import android.widget.TextView;
 
@@ -40,6 +41,8 @@ public class EventDetailActivity extends BaseActivity implements OnMapReadyCallb
     private View btnRsvpEvent;
     private SimpleDateFormat sdf = new SimpleDateFormat(GlobalConstant.DATE_TIME_FORMAT3);
     private SimpleDateFormat sdf1 = new SimpleDateFormat(GlobalConstant.DATE_TIME_FORMAT4);
+    private SupportMapFragment supportMap;
+    private View mapContainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,11 +69,12 @@ public class EventDetailActivity extends BaseActivity implements OnMapReadyCallb
         tvDescription = (TextView) findViewById(R.id.tv_description);
         btnAddCalendr = findViewById(R.id.btn_add_calendar);
         btnRsvpEvent = findViewById(R.id.btn_rsvp_event);
+        mapContainer = findViewById(R.id.map_container);
 
         tvTitle.setText(event.getName());
         tvDate.setText(event.getFormatted_time());
         tvLocationName.setText(event.getLocation());
-        tvDescription.setText(event.getDescription());
+        tvDescription.setText(Html.fromHtml(event.getDescription()));
 
         btnAddCalendr.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -129,8 +133,8 @@ public class EventDetailActivity extends BaseActivity implements OnMapReadyCallb
             }
         });
 
-        SupportMapFragment map = (SupportMapFragment)getSupportFragmentManager().findFragmentById(R.id.map);
-        map.getMapAsync(this);
+        supportMap = (SupportMapFragment)getSupportFragmentManager().findFragmentById(R.id.map);
+        supportMap.getMapAsync(this);
     }
 
     @Override
@@ -140,19 +144,14 @@ public class EventDetailActivity extends BaseActivity implements OnMapReadyCallb
         googleMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
             @Override
             public void onMapClick(LatLng latLng) {
+                openMap();
+            }
+        });
 
-                if(event.getLatitude() == 0f && event.getLongitude() == 0f)
-                {
-                    String mapUrl = String.format("http://maps.google.co.in/maps?q=%s", event.getLocation());
-                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(mapUrl));
-                    startActivity(intent);
-                }
-                else
-                {
-                    String mapUrl = String.format("geo:%s,%s?q=%s", event.getLatitude(), event.getLongitude(), event.getLocation());
-                    Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(mapUrl));
-                    startActivity(intent);
-                }
+        tvLocationName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openMap();
             }
         });
 
@@ -161,12 +160,29 @@ public class EventDetailActivity extends BaseActivity implements OnMapReadyCallb
             LatLng eventLatLng = new LatLng(1.290270f, 103.851959f);
             googleMap.addMarker(new MarkerOptions().position(eventLatLng).title(event.getLocation()));
             googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(eventLatLng, 15f));
+            mapContainer.setVisibility(View.GONE);
         }
         else {
 
             LatLng eventLatLng = new LatLng(event.getLatitude(), event.getLongitude());
             googleMap.addMarker(new MarkerOptions().position(eventLatLng).title(event.getLocation()));
             googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(eventLatLng, 15f));
+        }
+    }
+
+    private void openMap()
+    {
+        if(event.getLatitude() == 0f && event.getLongitude() == 0f)
+        {
+            String mapUrl = String.format("http://maps.google.co.in/maps?q=%s", event.getLocation());
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(mapUrl));
+            startActivity(intent);
+        }
+        else
+        {
+            String mapUrl = String.format("geo:%s,%s?q=%s", event.getLatitude(), event.getLongitude(), event.getLocation());
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(mapUrl));
+            startActivity(intent);
         }
     }
 }

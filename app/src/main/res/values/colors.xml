@@ -40,4 +40,7 @@
     <color name="grey_700">#616161</color>
     <color name="grey_800">#424242</color>
     <color name="grey_900">#212121</color>
+
+    <color name="primary_text_material_light">#000000</color>
+    <color name="secondary_text_material_light">#000000</color>
 </resources>
